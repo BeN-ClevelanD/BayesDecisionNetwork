@@ -1,0 +1,71 @@
+network "StudentPerformance" {
+// written by aGrUM 1.15.1
+}
+
+variable Medu {
+   type discrete[2] {0, 1};
+}
+
+variable Fedu {
+   type discrete[2] {0, 1};
+}
+
+variable Higher {
+   type discrete[2] {0, 1};
+}
+
+variable Absences {
+   type discrete[3] {0, 1, 2};
+}
+
+variable StudyTime {
+   type discrete[4] {0, 1, 2, 3};
+}
+
+variable Failures {
+   type discrete[3] {0, 1, 2};
+}
+
+variable FinalGrade {
+   type discrete[2] {0, 1};
+}
+
+probability (Medu) {
+   table 0.730354 0.269646;
+}
+probability (Fedu) {
+   table 0.802773 0.197227;
+}
+probability (Higher | Medu, Fedu) {
+   (0, 0) 0.848073 0.151927;
+   (1, 0) 1 0;
+   (0, 1) 1 0;
+   (1, 1) 0.978947 0.0210526;
+}
+probability (Absences) {
+   table 0.987673 0.0123267 0;
+}
+probability (StudyTime | Higher) {
+   (0) 0.637681 0.275362 0.057971 0.0289855;
+   (1) 0.289655 0.493103 0.160345 0.0568966;
+}
+probability (Failures | Absences) {
+   (0) 0.848674 0.106084 0.0452418;
+   (1) 0.625 0.25 0.125;
+   (2) 0 0 0;
+}
+probability (FinalGrade | StudyTime, Failures) {
+   (0, 0) 0.147239 0.852761;
+   (1, 0) 0.0871212 0.912879;
+   (2, 0) 0.0337079 0.966292;
+   (3, 0) 0.030303 0.969697;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0.346154 0.653846;
+   (2, 1) 0.666667 0.333333;
+   (3, 1) 0.5 0.5;
+   (0, 2) 0.615385 0.384615;
+   (1, 2) 0.6 0.4;
+   (2, 2) 0 1;
+   (3, 2) 0 0;
+}
+

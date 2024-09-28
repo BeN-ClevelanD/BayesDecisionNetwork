@@ -1,0 +1,48 @@
+Node,Condition,Medu,Probability,Fedu,Absences,Higher,Failures,StudyTime,FinalGrade
+Medu,N/A,0.0,0.7303543913713405,,,,,,
+Medu,N/A,1.0,0.2696456086286595,,,,,,
+Fedu,N/A,,0.802773497688752,0.0,,,,,
+Fedu,N/A,,0.19722650231124808,1.0,,,,,
+Absences,N/A,,0.987673343605547,,Low,,,,
+Absences,N/A,,0.012326656394453005,,Medium,,,,
+Higher,"Medu=0, Fedu=0",,0.8480725623582767,,,yes,,,
+Higher,"Medu=0, Fedu=0",,0.15192743764172337,,,no,,,
+Higher,"Medu=0, Fedu=1",,1.0,,,yes,,,
+Higher,"Medu=1, Fedu=0",,1.0,,,yes,,,
+Higher,"Medu=1, Fedu=1",,0.9789473684210527,,,yes,,,
+Higher,"Medu=1, Fedu=1",,0.021052631578947368,,,no,,,
+Failures,Absences=Low,,0.8486739469578783,,,,0,,
+Failures,Absences=Low,,0.1060842433697348,,,,1,,
+Failures,Absences=Low,,0.0452418096723869,,,,More than 1,,
+Failures,Absences=Medium,,0.625,,,,0,,
+Failures,Absences=Medium,,0.25,,,,1,,
+Failures,Absences=Medium,,0.125,,,,More than 1,,
+StudyTime,Higher=no,,0.6376811594202898,,,,,Very Low,
+StudyTime,Higher=no,,0.2753623188405797,,,,,Low,
+StudyTime,Higher=no,,0.057971014492753624,,,,,Medium,
+StudyTime,Higher=no,,0.028985507246376812,,,,,High,
+StudyTime,Higher=yes,,0.49310344827586206,,,,,Low,
+StudyTime,Higher=yes,,0.2896551724137931,,,,,Very Low,
+StudyTime,Higher=yes,,0.16034482758620688,,,,,Medium,
+StudyTime,Higher=yes,,0.056896551724137934,,,,,High,
+FinalGrade,"Failures=0, StudyTime=High",,0.9696969696969697,,,,,,Pass
+FinalGrade,"Failures=0, StudyTime=High",,0.030303030303030304,,,,,,Fail
+FinalGrade,"Failures=0, StudyTime=Low",,0.9128787878787878,,,,,,Pass
+FinalGrade,"Failures=0, StudyTime=Low",,0.08712121212121213,,,,,,Fail
+FinalGrade,"Failures=0, StudyTime=Medium",,0.9662921348314607,,,,,,Pass
+FinalGrade,"Failures=0, StudyTime=Medium",,0.033707865168539325,,,,,,Fail
+FinalGrade,"Failures=0, StudyTime=Very Low",,0.852760736196319,,,,,,Pass
+FinalGrade,"Failures=0, StudyTime=Very Low",,0.147239263803681,,,,,,Fail
+FinalGrade,"Failures=1, StudyTime=High",,0.5,,,,,,Pass
+FinalGrade,"Failures=1, StudyTime=High",,0.5,,,,,,Fail
+FinalGrade,"Failures=1, StudyTime=Low",,0.6538461538461539,,,,,,Pass
+FinalGrade,"Failures=1, StudyTime=Low",,0.34615384615384615,,,,,,Fail
+FinalGrade,"Failures=1, StudyTime=Medium",,0.6666666666666666,,,,,,Fail
+FinalGrade,"Failures=1, StudyTime=Medium",,0.3333333333333333,,,,,,Pass
+FinalGrade,"Failures=1, StudyTime=Very Low",,0.5,,,,,,Pass
+FinalGrade,"Failures=1, StudyTime=Very Low",,0.5,,,,,,Fail
+FinalGrade,"Failures=More than 1, StudyTime=Low",,0.6,,,,,,Fail
+FinalGrade,"Failures=More than 1, StudyTime=Low",,0.4,,,,,,Pass
+FinalGrade,"Failures=More than 1, StudyTime=Medium",,1.0,,,,,,Pass
+FinalGrade,"Failures=More than 1, StudyTime=Very Low",,0.6153846153846154,,,,,,Fail
+FinalGrade,"Failures=More than 1, StudyTime=Very Low",,0.38461538461538464,,,,,,Pass

@@ -1,0 +1,81 @@
+import pandas as pd
+
+# Load the dataset
+port_final_df = pd.read_csv('processed_port_data.csv')
+
+# Function to calculate CPT for Medu (Root Node)
+def calculate_cpt_medu():
+    total = len(port_final_df)
+    counts = port_final_df['Medu'].value_counts()
+    rows = [{'Node': 'Medu', 'Condition': 'N/A', 'Medu': value, 'Probability': counts[value] / total} for value in counts.index]
+    return rows
+
+# Function to calculate CPT for Fedu (Root Node)
+def calculate_cpt_fedu():
+    total = len(port_final_df)
+    counts = port_final_df['Fedu'].value_counts()
+    rows = [{'Node': 'Fedu', 'Condition': 'N/A', 'Fedu': value, 'Probability': counts[value] / total} for value in counts.index]
+    return rows
+
+# Function to calculate CPT for Absences (Root Node)
+def calculate_cpt_absences():
+    total = len(port_final_df)
+    counts = port_final_df['absences'].value_counts()
+    rows = [{'Node': 'Absences', 'Condition': 'N/A', 'Absences': value, 'Probability': counts[value] / total} for value in counts.index]
+    return rows
+
+# Function to calculate CPT for Higher (Dependent on Medu and Fedu)
+def calculate_cpt_higher():
+    rows = []
+    for medu_fedu_vals, group_df in port_final_df.groupby(['Medu', 'Fedu']):
+        medu_fedu_total = len(group_df)
+        counts = group_df['higher'].value_counts()
+        for value in counts.index:
+            rows.append({'Node': 'Higher', 'Condition': f"Medu={medu_fedu_vals[0]}, Fedu={medu_fedu_vals[1]}", 'Higher': value, 'Probability': counts[value] / medu_fedu_total})
+    return rows
+
+# Function to calculate CPT for Failures (Dependent on Absences)
+def calculate_cpt_failures():
+    rows = []
+    for absences_val, group_df in port_final_df.groupby('absences'):
+        absences_total = len(group_df)
+        counts = group_df['failures'].value_counts()
+        for value in counts.index:
+            rows.append({'Node': 'Failures', 'Condition': f"Absences={absences_val}", 'Failures': value, 'Probability': counts[value] / absences_total})
+    return rows
+
+# Function to calculate CPT for Study Time (Dependent on Higher)
+def calculate_cpt_studytime():
+    rows = []
+    for higher_val, group_df in port_final_df.groupby('higher'):
+        higher_total = len(group_df)
+        counts = group_df['studytime'].value_counts()
+        for value in counts.index:
+            rows.append({'Node': 'StudyTime', 'Condition': f"Higher={higher_val}", 'StudyTime': value, 'Probability': counts[value] / higher_total})
+    return rows
+
+# Function to calculate CPT for Final Grade (Dependent on Failures and Studytime)
+def calculate_cpt_final_grade():
+    rows = []
+    for failures_studytime_vals, group_df in port_final_df.groupby(['failures', 'studytime']):
+        failures_studytime_total = len(group_df)
+        counts = group_df['Final_Grade'].value_counts()
+        for value in counts.index:
+            rows.append({'Node': 'FinalGrade', 'Condition': f"Failures={failures_studytime_vals[0]}, StudyTime={failures_studytime_vals[1]}", 'FinalGrade': value, 'Probability': counts[value] / failures_studytime_total})
+    return rows
+
+# Combine all CPTs into a single DataFrame
+cpt_rows = []
+cpt_rows.extend(calculate_cpt_medu())
+cpt_rows.extend(calculate_cpt_fedu())
+cpt_rows.extend(calculate_cpt_absences())
+cpt_rows.extend(calculate_cpt_higher())
+cpt_rows.extend(calculate_cpt_failures())
+cpt_rows.extend(calculate_cpt_studytime())
+cpt_rows.extend(calculate_cpt_final_grade())
+
+# Convert to DataFrame and save as CSV
+cpt_df = pd.DataFrame(cpt_rows)
+cpt_df.to_csv('cpts_bayesian_network.csv', index=False)
+
+print("CPTs have been written to 'cpts_bayesian_network.csv'.")
