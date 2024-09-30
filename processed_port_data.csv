@@ -39,7 +39,7 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 1,1,yes,Medium,Low,0,Pass
 0,1,yes,Medium,Low,0,Pass
 0,0,yes,Very Low,Low,0,Pass
-0,0,yes,Low,Low,0,Pass
+0,0,yes,Low,Medium,0,Pass
 1,1,yes,Very Low,Low,0,Pass
 1,1,yes,Low,Low,0,Pass
 0,0,yes,Very Low,Low,0,Pass
@@ -102,7 +102,7 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 1,1,yes,Very Low,Low,0,Fail
 1,1,yes,Medium,Low,0,Pass
 1,1,yes,Very Low,Low,0,Pass
-0,0,yes,Low,Low,0,Pass
+0,0,yes,Low,Medium,0,Pass
 0,1,yes,Low,Low,0,Pass
 0,0,yes,High,Low,0,Pass
 0,0,yes,High,Low,0,Pass
@@ -160,7 +160,7 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 0,0,yes,Low,Low,1,Pass
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
-1,1,no,Very Low,Low,0,Fail
+1,1,no,Very Low,Medium,0,Fail
 0,0,yes,Very Low,Low,0,Pass
 0,0,no,Very Low,Low,More than 1,Fail
 0,0,yes,Very Low,Low,1,Pass
@@ -205,12 +205,12 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
-0,0,yes,Low,Low,0,Pass
+0,0,yes,Low,Medium,0,Pass
 0,0,yes,Very Low,Low,0,Pass
 0,0,yes,Very Low,Low,0,Pass
 0,1,yes,Low,Low,0,Pass
 1,1,yes,Very Low,Low,0,Pass
-0,0,yes,Very Low,Low,0,Pass
+0,0,yes,Very Low,Medium,0,Pass
 1,1,yes,Very Low,Medium,1,Pass
 1,1,yes,Low,Low,0,Pass
 1,0,yes,Low,Low,0,Pass
@@ -224,12 +224,12 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 0,0,yes,Very Low,Low,0,Pass
 1,0,yes,Medium,Low,0,Pass
 0,0,yes,High,Low,0,Pass
-1,1,yes,Low,Low,0,Pass
+1,1,yes,Low,Medium,0,Pass
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
 1,1,yes,Very Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
-1,0,yes,Low,Low,0,Pass
+1,0,yes,Low,Medium,0,Pass
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Very Low,Low,0,Pass
 0,0,yes,Medium,Low,0,Pass
@@ -252,8 +252,8 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Very Low,Low,0,Pass
 1,0,yes,Low,Low,0,Pass
-0,1,yes,Low,Low,1,Pass
-0,0,yes,Low,Low,1,Pass
+0,1,yes,Low,Medium,1,Pass
+0,0,yes,Low,Medium,1,Pass
 0,0,no,Very Low,Low,1,Fail
 0,0,no,Very Low,Medium,1,Fail
 1,1,yes,Very Low,Low,0,Fail
@@ -262,7 +262,7 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 0,0,no,Very Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
 0,1,yes,Very Low,Low,1,Fail
-0,0,no,Low,Low,0,Fail
+0,0,no,Low,Medium,0,Fail
 0,0,no,Very Low,Low,1,Pass
 0,0,yes,Medium,Low,0,Pass
 1,0,yes,Low,Low,0,Pass
@@ -310,14 +310,14 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 1,1,yes,Low,Low,0,Pass
 1,0,yes,Low,Low,0,Pass
 0,0,no,Low,Low,0,Pass
-0,0,yes,Low,Low,0,Pass
+0,0,yes,Low,Medium,0,Pass
 0,0,yes,High,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
 0,1,yes,Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
-0,0,no,Low,Low,0,Pass
+0,0,no,Low,Medium,0,Pass
 1,1,yes,Very Low,Low,0,Pass
 1,1,yes,Low,Low,1,Pass
 0,0,yes,Medium,Low,0,Pass
@@ -325,7 +325,7 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 1,0,yes,Very Low,Low,0,Pass
 0,0,no,Very Low,Low,0,Pass
 1,0,yes,Very Low,Medium,0,Pass
-0,0,yes,Very Low,Low,0,Pass
+0,0,yes,Very Low,Medium,0,Pass
 0,0,yes,High,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
@@ -396,7 +396,7 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 0,0,yes,Low,Low,0,Pass
 1,1,yes,Low,Low,0,Pass
 0,1,yes,Low,Low,0,Pass
-0,0,yes,Low,Low,0,Pass
+0,0,yes,Low,Medium,0,Pass
 0,0,yes,Medium,Low,0,Pass
 0,0,yes,Medium,Low,0,Pass
 1,0,yes,Medium,Low,0,Pass
@@ -404,7 +404,7 @@ Medu,Fedu,higher,studytime,absences,failures,Final_Grade
 1,0,yes,Medium,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
 0,0,yes,Low,Low,0,Pass
-0,0,no,Very Low,Low,1,Pass
+0,0,no,Very Low,Medium,1,Pass
 0,0,yes,Very Low,Low,1,Pass
 1,1,yes,Medium,Low,More than 1,Pass
 0,0,no,Low,Low,0,Pass

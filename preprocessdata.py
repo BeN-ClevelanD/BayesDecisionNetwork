@@ -33,7 +33,7 @@ port_data['studytime'] = port_data['studytime'].apply(categorize_studytime)
 
 # Function to categorize Absences
 def categorize_absences(x):
-    if x < 20:
+    if x < 15:
         return 'Low'
     elif 15 <= x <= 40:
         return 'Medium'
