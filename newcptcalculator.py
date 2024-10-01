@@ -3,10 +3,17 @@ import pandas as pd
 # Load the dataset
 port_final_df = pd.read_csv('processed_port_data.csv')
 
+# Ensure consistent ordering for categorical variables
+port_final_df['Final_Grade'] = pd.Categorical(port_final_df['Final_Grade'], categories=['Fail', 'Pass'], ordered=True)
+port_final_df['studytime'] = pd.Categorical(port_final_df['studytime'], categories=['Very Low', 'Low', 'Medium', 'High'], ordered=True)
+port_final_df['absences'] = pd.Categorical(port_final_df['absences'], categories=['Low', 'Medium', 'High'], ordered=True)
+port_final_df['failures'] = pd.Categorical(port_final_df['failures'], categories=['0', '1', 'More than 1'], ordered=True)
+port_final_df['higher'] = pd.Categorical(port_final_df['higher'], categories=['no', 'yes'], ordered=True)
+
 # Function to calculate CPT for Medu (Root Node)
 def calculate_cpt_medu():
     total = len(port_final_df)
-    counts = port_final_df['Medu'].value_counts()
+    counts = port_final_df['Medu'].value_counts().sort_index()
     cpt = {value: counts[value] / total for value in counts.index}
     print("CPT for Medu:", cpt)
     return cpt
@@ -14,7 +21,7 @@ def calculate_cpt_medu():
 # Function to calculate CPT for Fedu (Root Node)
 def calculate_cpt_fedu():
     total = len(port_final_df)
-    counts = port_final_df['Fedu'].value_counts()
+    counts = port_final_df['Fedu'].value_counts().sort_index()
     cpt = {value: counts[value] / total for value in counts.index}
     print("CPT for Fedu:", cpt)
     return cpt
@@ -22,7 +29,7 @@ def calculate_cpt_fedu():
 # Function to calculate CPT for Absences (Root Node)
 def calculate_cpt_absences():
     total = len(port_final_df)
-    counts = port_final_df['absences'].value_counts()
+    counts = port_final_df['absences'].value_counts().sort_index()
     cpt = {value: counts[value] / total for value in counts.index}
     print("CPT for Absences:", cpt)
     return cpt
@@ -32,7 +39,7 @@ def calculate_cpt_higher():
     cpt = {}
     for medu_fedu_vals, group_df in port_final_df.groupby(['Medu', 'Fedu']):
         medu_fedu_total = len(group_df)
-        counts = group_df['higher'].value_counts()
+        counts = group_df['higher'].value_counts().sort_index()
         cpt[medu_fedu_vals] = {value: counts[value] / medu_fedu_total for value in counts.index}
     print("CPT for Higher:", cpt)
     return cpt
@@ -42,7 +49,7 @@ def calculate_cpt_failures():
     cpt = {}
     for absences_val, group_df in port_final_df.groupby('absences'):
         absences_total = len(group_df)
-        counts = group_df['failures'].value_counts()
+        counts = group_df['failures'].value_counts().sort_index()
         cpt[absences_val] = {value: counts[value] / absences_total for value in counts.index}
     print("CPT for Failures:", cpt)
     return cpt
@@ -52,7 +59,7 @@ def calculate_cpt_studytime():
     cpt = {}
     for higher_val, group_df in port_final_df.groupby('higher'):
         higher_total = len(group_df)
-        counts = group_df['studytime'].value_counts()
+        counts = group_df['studytime'].value_counts().sort_index()
         cpt[higher_val] = {value: counts[value] / higher_total for value in counts.index}
     print("CPT for Study Time:", cpt)
     return cpt
@@ -62,17 +69,17 @@ def calculate_cpt_final_grade():
     cpt = {}
     for failures_studytime_vals, group_df in port_final_df.groupby(['failures', 'studytime']):
         failures_studytime_total = len(group_df)
-        counts = group_df['Final_Grade'].value_counts()
+        counts = group_df['Final_Grade'].value_counts().sort_index()
         cpt[failures_studytime_vals] = {value: counts[value] / failures_studytime_total for value in counts.index}
     print("CPT for Final Grade:", cpt)
     return cpt
 
-
+# Function to calculate CPT for Final Grade (Dependent on Paid)
 def calculate_cpt_final_grade_paid():
     cpt = {}
     for paid_val, group_df in port_final_df.groupby('paid'):
         paid_total = len(group_df)
-        counts = group_df['Final_Grade'].value_counts()
+        counts = group_df['Final_Grade'].value_counts().sort_index()
         cpt[paid_val] = {value: counts[value] / paid_total for value in counts.index}
     print("CPT for Final Grade (Paid):", cpt)
     return cpt
@@ -91,7 +98,7 @@ cpts['FinalGrade'] = calculate_cpt_final_grade()
 #cpts['FinalGrade_Paid'] = calculate_cpt_final_grade_paid()
 
 # Write all CPTs to a text file in a readable format
-with open('cpts_bayesian_network.txt', 'w') as file:
+with open('new_cpts_bayesian_network.txt', 'w') as file:
     for key, value in cpts.items():
         file.write(f'CPT for {key}:\n')
         file.write(f'{value}\n\n')

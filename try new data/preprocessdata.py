@@ -48,10 +48,8 @@ port_data['absences'] = port_data['absences'].apply(categorize_absences)
 def categorize_failures(x):
     if x == 0:
         return '0'
-    elif x == 1:
-        return '1'
     else:
-        return 'More than 1'
+        return '1 or more'
 
 # Apply Failures categories
 

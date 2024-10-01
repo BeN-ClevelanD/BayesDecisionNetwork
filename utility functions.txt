@@ -1,0 +1,46 @@
+
+
+
+
+
+
+	Expected utility (giving lessons) = (PrFail)(improving pass rate + Paying teachers + Showing support to students) + (PrPass)(Paying teachers + showing support to students)
+	Expected utility (not giving lessons) = (PrFail)(Missed opportunity + not paying the teachers) + (PrPass)(Not paying teachers)
+
+	Expected utility (giving lessons) = (PrFail)(85) + (PrPass)(-15)
+	Expected utility (not giving lessons) = (PrFail)(-30) + (PrPass)(70)
+
+	improving pass rate = +100
+	paying the teachers = -70
+	showing support to students = +55
+	missed opportunity of improving pass rate + negative social feedback = -100
+	Not paying the teachers(saving resources) = +70
+	
+
+
+	example1= 70% chance of failure, 30% chance of passing
+	EU(L) = (0.7)x(85) + (0.3)x(-15) = 55
+	EU(NL) = (0.7)x(-30) + (0.3)x(70) = 0
+	
+	example2= 30% chance of failure, 70% chance of passing
+	EU(L) = (0.3)x(85) + (0.7)x(-15) = 15
+	EU(NL) = (0.3)x(-30) + (0.7)x(70) = 40
+
+	example3= 45% chance of failure, 55% chance of passing
+	EU(L) = (0.45)x(85) + (0.55)x(-15) = 30
+	EU(NL) = (0.45)x(-30) + (0.55)x(70) = 25
+
+	example4= 55% chance of failure, 45% chance of passing
+	EU(L) = (0.55)x(85) + (0.45)x(-15) = 40
+	EU(NL) = (0.55)x(-30) + (0.45)x(70) = 15
+
+	example5= 40% chance of failure, 60% chance of passing
+	EU(L) = (0.40)x(85) + (0.60)x(-15) = 25
+	EU(NL) = (0.40)x(-30) + (0.60)x(70) = 30
+
+	example 6 = 50% chance of failure, 50% chance of passing
+	EU(L) = (0.50)x(85) + (0.50)x(-15) = 35 
+	EU(NL) = (0.50)x(-30) + (0.50)x(70) = 20
+
+	
+	

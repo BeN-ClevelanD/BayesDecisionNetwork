@@ -1,1 +1,3 @@
+"conda activate myenv"
+
 RE MAKE THE BUILD program according to the new cpts

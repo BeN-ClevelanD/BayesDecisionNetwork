@@ -1,0 +1,43 @@
+CPT for Medu:
+{0: np.float64(0.7303543913713405), 1: np.float64(0.2696456086286595)}
+
+
+CPT for Fedu:
+{0: np.float64(0.802773497688752), 1: np.float64(0.19722650231124808)}
+
+
+
+CPT for Absences:
+{'Low': np.float64(0.7180277349768875), 'Medium': np.float64(0.24961479198767333), 'High': np.float64(0.032357473035439135)}
+
+
+
+CPT for Higher:
+{(np.int64(0), np.int64(0)): {'no': np.float64(0.15192743764172337), 'yes': np.float64(0.8480725623582767)}, (np.int64(0), np.int64(1)): {'no': np.float64(0.0), 'yes': np.float64(1.0)}, 
+(np.int64(1), np.int64(0)): {'no': np.float64(0.0), 'yes': np.float64(1.0)}, (np.int64(1), np.int64(1)): {'no': np.float64(0.021052631578947368), 'yes': np.float64(0.9789473684210527)}}
+
+
+
+CPT for Failures:
+{'Low': {'0': np.float64(0.869098712446352), '1': np.float64(0.08798283261802575), 'More than 1': np.float64(0.04291845493562232)}, 
+'Medium': {'0': np.float64(0.7962962962962963), '1': np.float64(0.14814814814814814), 'More than 1': np.float64(0.05555555555555555)}, 
+'High': {'0': np.float64(0.7142857142857143), '1': np.float64(0.23809523809523808), 'More than 1': np.float64(0.047619047619047616)}}
+
+
+
+CPT for Studytime:
+{'no': {'Very Low': np.float64(0.6376811594202898), 'Low': np.float64(0.2753623188405797), 'Medium': np.float64(0.057971014492753624), 'High': np.float64(0.028985507246376812)},
+ 'yes': {'Very Low': np.float64(0.2896551724137931), 'Low': np.float64(0.49310344827586206), 'Medium': np.float64(0.16034482758620688), 'High': np.float64(0.056896551724137934)}}
+
+
+
+CPT for FinalGrade:
+{('0', 'Very Low'): {'Fail': np.float64(0.147239263803681), 'Pass': np.float64(0.852760736196319)}, ('0', 'Low'): {'Fail': np.float64(0.08712121212121213), 'Pass': np.float64(0.9128787878787878)}, 
+ ('0', 'Medium'): {'Fail': np.float64(0.033707865168539325), 'Pass': np.float64(0.9662921348314607)}, ('0', 'High'): {'Fail': np.float64(0.030303030303030304), 'Pass': np.float64(0.9696969696969697)}, 
+
+('1', 'Very Low'): {'Fail': np.float64(0.5), 'Pass': np.float64(0.5)}, ('1', 'Low'): {'Fail': np.float64(0.34615384615384615), 'Pass': np.float64(0.6538461538461539)}, 
+('1', 'Medium'): {'Fail': np.float64(0.6666666666666666), 'Pass': np.float64(0.3333333333333333)}, ('1', 'High'): {'Fail': np.float64(0.5), 'Pass': np.float64(0.5)}, 
+
+('More than 1', 'Very Low'): {'Fail': np.float64(0.6153846153846154), 'Pass': np.float64(0.38461538461538464)}, ('More than 1', 'Low'): {'Fail': np.float64(0.6), 'Pass': np.float64(0.4)}, 
+('More than 1', 'Medium'): {'Fail': np.float64(0.0), 'Pass': np.float64(1.0)}}
+

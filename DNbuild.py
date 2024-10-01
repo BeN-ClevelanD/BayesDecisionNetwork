@@ -1,7 +1,8 @@
 import pyAgrum as gum
+import pyAgrum.lib.notebook as gnb  # for graphical visualization
 
 # Initialize the Bayesian Network
-bn = gum.BayesNet('StudentPerformance')
+bn = gum.InfluenceDiagram()
 
 # Add Nodes to the Network
 medu = bn.add(gum.LabelizedVariable("Medu", "Mother's Education", 2))  # 0: No Higher Education, 1: Higher Education
@@ -12,6 +13,19 @@ studytime = bn.add(gum.LabelizedVariable("StudyTime", "Study Time", 4))  # 0: Ve
 failures = bn.add(gum.LabelizedVariable("Failures", "Failures", 3))  # 0: 0, 1: 1, 2: More than 1
 final_grade = bn.add(gum.LabelizedVariable("FinalGrade", "Final Grade", 2))  # 0: Fail, 1: Pass
 
+
+
+# Add Decision Node (whether to give extra lessons or not)
+intervention = bn.addDecisionNode(gum.LabelizedVariable("Intervention", "School Intervention", 2))  # 0: No, 1: Yes
+
+# Add Utility Node
+utility = bn.addUtilityNode("Utility")
+
+
+
+
+
+
 # Add arcs (dependencies) as per the Bayesian network structure
 bn.addArc(medu, higher)
 bn.addArc(fedu, higher)
@@ -19,6 +33,16 @@ bn.addArc(higher, studytime)
 bn.addArc(absences, failures)
 bn.addArc(studytime, final_grade)
 bn.addArc(failures, final_grade)
+
+
+# Connect Decision Node and Chance Nodes to the Utility Node
+bn.addArc(final_grade, utility)
+bn.addArc(intervention, utility)
+
+
+
+
+#BELOW ARE THE CPT TABLE ASSIGNMENTS
 
 # Set CPT for Medu (Root node)
 bn.cpt(medu)[0] = 0.7303543913713405
@@ -60,9 +84,36 @@ bn.cpt(final_grade)[2, 0] = [0.6153846153846154, 0.38461538461538464]  # Failure
 bn.cpt(final_grade)[2, 1] = [0.6, 0.4]  # Failures=More than 1, StudyTime=Low
 bn.cpt(final_grade)[2, 2] = [0.0, 1.0]  # Failures=More than 1, StudyTime=Medium
 
+
+
+
+
+
+
+
+
+# Define the utility table based on the utility functions provided in the file
+#bn.utility("Utility").edit(2, 2)  # 2 states for FinalGrade, 2 states for Intervention
+
+#Defining utility tables
+bn.utility("Utility")[0, 1] = 70  # Not intervening, passing
+bn.utility("Utility")[0, 0] = -30  # Not intervening, failing
+bn.utility("Utility")[1, 1] = -15   # Intervening, passing
+bn.utility("Utility")[1, 0] = 85  # Intervening, failing
+
 # Print the structure of the network
-print("Bayesian Network Structure:")
+print("Decision Network Structure:")
 print(bn)
+
+
+
+
+
+
+
+
+
+
 
 # Print the CPTs for each node
 nodes = ['Medu', 'Fedu', 'Absences', 'Higher', 'Failures', 'StudyTime', 'FinalGrade']
@@ -70,20 +121,30 @@ for node in nodes:
     print(f"\nCPT of {node}:")
     print(bn.cpt(bn.idFromName(node)))
 
-# Save the Bayesian network to a file
-gum.saveBN(bn, 'student_performance.bif')
+# Correct inference engine for influence diagrams
+ie = gum.ShaferShenoyLIMIDInference(bn)
 
-# Inference Example: Predict Final Grade
-ie = gum.LazyPropagation(bn)
-# Example evidence with correct mappings
+# Perform inference to predict Final Grade based on evidence
 ie.setEvidence({
     'Medu': 0,  # Higher Education for Mother
     'Fedu': 0,  # Higher Education for Father
     'Absences' : 1,  # Yes to Higher Education
     'StudyTime': 0,  # Medium Study Time
-    'Failures': 1  # No Failures
+    'Failures': 1  # One Failure
 })
+
+
+
 ie.makeInference()
+
 print("\nPosterior distribution of FinalGrade:")
 print(ie.posterior(bn.idFromName('FinalGrade')))
 
+# Perform inference and get the optimal decision
+optimal_decision = ie.optimalDecision("Intervention")
+print(f"\nThe optimal decision is: {optimal_decision}")
+
+
+
+
+gnb.showInference(bn, evs={'Medu': 0, 'Fedu': 0, 'Absences': 1, 'StudyTime': 0, 'Failures': 1})
